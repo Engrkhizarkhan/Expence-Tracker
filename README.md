@@ -1,0 +1,2 @@
+# Glosry-Shopping-List
+ 
