@@ -182,18 +182,20 @@ button{
     
 }
 @media screen and (max-width: 768px) {
+    #container div{
+        width: 90%;
+    }
     .list{
         display: flex;
         flex-direction: column;
         width: auto;
-        padding: 10px 40px;
-        font-size: 12px;
+        padding: 10px 60px;
     }
     .list {
-        font-size: 11px;
+        font-size: 18px;
     }
     .delete-btn{
         margin-top: 5px;
-        padding: 2px 15px;
+        padding: 5px 15px;
     }
 }
