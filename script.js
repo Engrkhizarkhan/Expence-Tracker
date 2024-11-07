@@ -14,6 +14,7 @@ content.className = 'content';
 
 // Create the form
 const nameText = document.createElement('div');
+nameText.id = 'nameForEnter';
 nameText.className = 'name-form';
 nameText.innerHTML = 'Item Name:';
 container.appendChild(nameText);
@@ -24,6 +25,7 @@ nameInput.required = true;
 nameText.appendChild(nameInput);
 
 const amountText = document.createElement('div');
+amountText.id = 'amountForEnter';
 container.appendChild(amountText);
 const amountInput = document.createElement('input');
 amountText.className = 'amount-form';
@@ -31,6 +33,7 @@ amountInput.placeholder = 'Enter the amount';
 amountInput.type = 'number';
 amountInput.min = 0;
 amountInput.required = true;
+amountInput.tabIndex = 0;
 amountText.innerHTML = 'Amount:';
 amountText.appendChild(amountInput);
 
@@ -126,5 +129,22 @@ const clearList = () => {
 
 addBtn.addEventListener('click', addValue);
 clearBtn.addEventListener('click', clearList);
+
+// Enter funtionality
+
+document.getElementById('nameForEnter').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter'){
+    addValue();
+    return;
+  } 
+  else if (e.key === 'ArrowDown'){
+    amountInput.focus();
+  }
+});
+document.getElementById('amountForEnter').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter'){
+        addValue();
+    }
+});
 
 displayList();
