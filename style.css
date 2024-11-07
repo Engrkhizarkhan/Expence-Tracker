@@ -106,7 +106,6 @@ button{
     opacity: 0;  /* Start invisible */
     transform: scale(0);  /* Start small */
 }
-
 @keyframes popup {
     0% {
         opacity: 0;
@@ -128,7 +127,7 @@ button{
     }
     100% {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(120px);
     }
 }
 

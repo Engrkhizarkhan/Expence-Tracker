@@ -1,4 +1,4 @@
-let lists = [];
+let lists = JSON.parse(localStorage.getItem('lists')) || [];
 let isFirstEntry = true;
 
 const header = document.getElementById('header');
@@ -62,6 +62,7 @@ const amountvalue = parseFloat(amountInput.value);
 
 if (namevalue && !isNaN(amountvalue)) {
     lists.push({name: namevalue, amount: amountvalue});
+    localStorage.setItem('lists', JSON.stringify(lists));
     nameInput.value = '';
     amountInput.value = '';
     displayList();
@@ -81,6 +82,7 @@ const displayList = () => {
     lists.forEach((item, index) => {
         const list = document.createElement('div');
         list.className = 'list';
+        list.id = 'listId';
         list.innerHTML = `
         <h2>Expense List #${index + 1}</h2>
         <p>Item Name: ${item.name}</p>
@@ -109,6 +111,7 @@ const displayList = () => {
             setTimeout(() => {
                 lists.splice(index, 1);
                 displayList();
+                localStorage.setItem('lists', JSON.stringify(lists));
             }, 500);
         });
     });
@@ -118,7 +121,10 @@ const clearList = () => {
     lists = [];
     isFirstEntry = true;
     displayList();
+    localStorage.clear();
 };
 
 addBtn.addEventListener('click', addValue);
 clearBtn.addEventListener('click', clearList);
+
+displayList();
